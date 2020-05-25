@@ -94,8 +94,6 @@ def load_data(city, month, day):
 
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week']==day]
-
-
     return df
 
 
@@ -230,8 +228,11 @@ def main():
             trip_duration_stats(df)
             user_stats(df)
 
+        ##display rawdata output if asked by user
+        #ask user if rawdata is desired
         raw_data_request=input('\nWould you like to see raw data? Enter yes or no.\n')
         ii=0
+        #display 5 lines of rawdata while user wants to see data
         while raw_data_request.lower()=='yes':
             [print(dict(df.iloc[ii+i,1:])) for i in  range(0,4)]
             ii+=5
