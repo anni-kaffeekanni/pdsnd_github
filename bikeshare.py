@@ -107,19 +107,16 @@ def time_stats(df):
     if len(df['month'].unique()) == 1:
         print('!filtered by month! No most common month can be calculated')
     else:
-        month_most_common=df['month'].mode()[0]
-        print('--Most common month: '+ months_name[month_most_common])
+        print('--Most common month: '+ months_name[df['month'].mode()[0]])
 
     # TO DO: display the most common day of week
     if len(df['day_of_week'].unique()) == 1:
         print('!filtered by month! No most common month can be calculated')
     else:
-        day_of_week=df['day_of_week'].mode()[0]
-        print('--Most common weekday: '+ weekdays[day_of_week])
+        print('--Most common weekday: '+ weekdays[df['day_of_week'].mode()[0]])
 
     # TO DO: display the most common start hour
-    start_hour=df['hour'].mode()[0]
-    print('--Most common hour: '+ str(start_hour))
+    print('--Most common hour: '+ str(df['hour'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -213,6 +210,20 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_rawdata(df)
+    #ask user if rawdata is desired
+    raw_data_request=input('\nWould you like to see raw data? Enter yes or no.\n')
+    ii=0
+    #display 5 lines of rawdata while user wants to see data
+    while raw_data_request.lower()=='yes':
+        [print(dict(df.iloc[ii+i,1:])) for i in  range(0,4)]
+        ii+=5
+        raw_data_request=input('\nWould you like to see more raw data? Enter yes or no.\n')
+
+    restart = input('\nWould you like to restart? Enter yes or no.\n')
+    if restart.lower() != 'yes':
+        break
+
 
 def main():
     while True:
@@ -228,20 +239,8 @@ def main():
             trip_duration_stats(df)# calculates and disprays trip duration statistics
             user_stats(df)#calculates and displays user statistics
 
-        ##display rawdata output if asked by user
-        #ask user if rawdata is desired
-        raw_data_request=input('\nWould you like to see raw data? Enter yes or no.\n')
-        ii=0
-        #display 5 lines of rawdata while user wants to see data
-        while raw_data_request.lower()=='yes':
-            [print(dict(df.iloc[ii+i,1:])) for i in  range(0,4)]
-            ii+=5
-            raw_data_request=input('\nWould you like to see more raw data? Enter yes or no.\n')
-
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
-
+        #display raw data
+        display_rawdata(df)
 
 if __name__ == "__main__":
 	main()
