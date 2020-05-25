@@ -215,6 +215,18 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_rawdata(df)
+    raw_data_request=input('\nWould you like to see raw data? Enter yes or no.\n')
+    ii=0
+    while raw_data_request.lower()=='yes':
+        [print(dict(df.iloc[ii+i,1:])) for i in  range(0,4)]
+        ii+=5
+        raw_data_request=input('\nWould you like to see more raw data? Enter yes or no.\n')
+
+    restart = input('\nWould you like to restart? Enter yes or no.\n')
+    if restart.lower() != 'yes':
+        break
+
 
 def main():
     while True:
@@ -230,17 +242,8 @@ def main():
             trip_duration_stats(df)
             user_stats(df)
 
-        raw_data_request=input('\nWould you like to see raw data? Enter yes or no.\n')
-        ii=0
-        while raw_data_request.lower()=='yes':
-            [print(dict(df.iloc[ii+i,1:])) for i in  range(0,4)]
-            ii+=5
-            raw_data_request=input('\nWould you like to see more raw data? Enter yes or no.\n')
-
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
-
+        #display raw data
+        display_rawdata(df)
 
 if __name__ == "__main__":
 	main()
