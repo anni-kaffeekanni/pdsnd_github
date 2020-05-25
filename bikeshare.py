@@ -223,10 +223,10 @@ def main():
         if df.empty:
             print('no data for this filter')
         else:
-            time_stats(df)
-            station_stats(df)
-            trip_duration_stats(df)
-            user_stats(df)
+            time_stats(df) #calculates and displays most frequent time of travel
+            station_stats(df) #calculates and displays most frequent stations
+            trip_duration_stats(df)# calculates and disprays trip duration statistics
+            user_stats(df)#calculates and displays user statistics
 
         ##display rawdata output if asked by user
         #ask user if rawdata is desired
