@@ -109,19 +109,16 @@ def time_stats(df):
     if len(df['month'].unique()) == 1:
         print('!filtered by month! No most common month can be calculated')
     else:
-        month_most_common=df['month'].mode()[0]
-        print('--Most common month: '+ months_name[month_most_common])
+        print('--Most common month: '+ months_name[df['month'].mode()[0]])
 
     # TO DO: display the most common day of week
     if len(df['day_of_week'].unique()) == 1:
         print('!filtered by month! No most common month can be calculated')
     else:
-        day_of_week=df['day_of_week'].mode()[0]
-        print('--Most common weekday: '+ weekdays[day_of_week])
+        print('--Most common weekday: '+ weekdays[df['day_of_week'].mode()[0]])
 
     # TO DO: display the most common start hour
-    start_hour=df['hour'].mode()[0]
-    print('--Most common hour: '+ str(start_hour))
+    print('--Most common hour: '+ str(df['hour'].mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
